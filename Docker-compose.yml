@@ -5,12 +5,12 @@ services:
     image: mondedie/flarum:stable
     container_name: flarum
     env_file:
-      - /mnt/docker/flarum/flarum.env
+      - ./mnt/docker/flarum/flarum.env
     volumes:
-      - /mnt/docker/flarum/assets:/flarum/app/public/assets
-      - /mnt/docker/flarum/extensions:/flarum/app/extensions
-      - /mnt/docker/flarum/storage/logs:/flarum/app/storage/logs
-      - /mnt/docker/flarum/nginx:/etc/nginx/flarum
+      - ./mnt/docker/flarum/assets:/flarum/app/public/assets
+      - ./mnt/docker/flarum/extensions:/flarum/app/extensions
+      - ./mnt/docker/flarum/storage/logs:/flarum/app/storage/logs
+      - ./mnt/docker/flarum/nginx:/etc/nginx/flarum
     ports:
       - 8081:8888
     depends_on:
@@ -24,4 +24,4 @@ services:
       MARIADB_USER: flarum
       MARIADB_PASSWORD: flarum_itds362
     volumes:
-      - /mnt/docker/mysql/db:/var/lib/mysql
+      - ./mnt/docker/mysql/db:/var/lib/mysql
