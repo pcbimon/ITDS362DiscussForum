@@ -18,7 +18,7 @@ ENV GID=991 \
     DEBUG=false \
     LOG_TO_STDOUT=false \
     GITHUB_TOKEN_AUTH=false \
-    FLARUM_PORT=8888
+    FLARUM_PORT=8081
 
 RUN apk add --no-progress --no-cache \
     curl \
