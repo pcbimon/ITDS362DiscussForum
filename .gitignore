@@ -2,3 +2,6 @@
 # docker
 flarum.env
 test.sh
+mnt/docker/mysql/db
+mnt/docker/flarum
+.env

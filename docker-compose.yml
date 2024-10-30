@@ -1,11 +1,7 @@
-version: "3"
-
 services:
   flarum:
     image: mondedie/flarum:stable
     container_name: flarum
-    env_file:
-      - ./mnt/docker/flarum/flarum.env
     volumes:
       - ./mnt/docker/flarum/assets:/flarum/app/public/assets
       - ./mnt/docker/flarum/extensions:/flarum/app/extensions
@@ -15,9 +11,15 @@ services:
       - 8081:8888
     depends_on:
       - mariadb_flarum
+    networks:
+      - web
+    env_file:
+      - .env
+    restart: always
   mariadb_flarum:
-    image: mariadb:10.5
+    image: mariadb:latest
     container_name: mariadb_flarum
+    hostname: mariadb
     environment:
       MARIADB_ROOT_PASSWORD: password1234*
       MARIADB_DATABASE: flarum
@@ -25,3 +27,9 @@ services:
       MARIADB_PASSWORD: flarum_itds362
     volumes:
       - ./mnt/docker/mysql/db:/var/lib/mysql
+    networks:
+      - web
+    restart: always
+networks:
+  web:
+    driver: bridge
